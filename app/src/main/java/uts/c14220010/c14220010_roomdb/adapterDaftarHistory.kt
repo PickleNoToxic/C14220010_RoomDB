@@ -1,6 +1,5 @@
 package uts.c14220010.c14220010_roomdb
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import uts.c14220010.c14220010_roomdb.database.daftarBelanja
 
-class adapterDaftar (private val daftarBelanja: MutableList<daftarBelanja>) : RecyclerView.Adapter<adapterDaftar.ListViewHolder>() {
-
+class adapterDaftarHistory(private val daftarBelanja: MutableList<daftarBelanja>) : RecyclerView.Adapter<adapterDaftarHistory.ListViewHolder>() {
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var _tvTanggal = itemView.findViewById<TextView>(R.id.tvTanggal)
         var _tvItemBarang = itemView.findViewById<TextView>(R.id.tvItem)
@@ -20,20 +18,8 @@ class adapterDaftar (private val daftarBelanja: MutableList<daftarBelanja>) : Re
         var _btnFinish = itemView.findViewById<FloatingActionButton>(R.id.btnFinish)
     }
 
-    private lateinit var onItemClickCallback : OnItemClickCallback
-
-    interface OnItemClickCallback {
-        fun delData(dtBelanja: daftarBelanja)
-
-        fun finishData(dtBelanja: daftarBelanja)
-    }
-
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_history, parent, false)
         return ListViewHolder(view)
     }
 
@@ -46,21 +32,6 @@ class adapterDaftar (private val daftarBelanja: MutableList<daftarBelanja>) : Re
         holder._tvTanggal.setText(daftar.tanggal)
         holder._tvItemBarang.setText(daftar.item)
         holder._tvJumlahBarang.setText(daftar.jumlah)
-
-        holder._btnEdit.setOnClickListener {
-            val intent = Intent(it.context, TambahDaftar::class.java)
-            intent.putExtra("id", daftar.id)
-            intent.putExtra("addEdit", 1)
-            it.context.startActivity(intent)
-        }
-
-        holder._btnDelete.setOnClickListener {
-            onItemClickCallback.delData(daftar)
-        }
-
-        holder._btnFinish.setOnClickListener {
-            onItemClickCallback.finishData(daftar)
-        }
     }
 
     fun isiData(daftar: List<daftarBelanja>){

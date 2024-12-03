@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+//Data class daftarBelanja adalah tabel di database
 @Entity
 data class daftarBelanja(
     @PrimaryKey(autoGenerate = true)

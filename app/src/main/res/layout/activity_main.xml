@@ -9,6 +9,14 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/btnHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginBottom="8dp"
+        android:text="History Item" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDaftar"
         android:layout_width="match_parent"
@@ -19,9 +27,9 @@
         android:id="@+id/fabAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/baseline_add_24"
-        android:clickable="true"
+        android:layout_gravity="right"
         android:layout_margin="16dp"
-        android:layout_gravity="right|bottom"/>
+        android:clickable="true"
+        android:src="@drawable/baseline_add_24" />
 
 </LinearLayout>

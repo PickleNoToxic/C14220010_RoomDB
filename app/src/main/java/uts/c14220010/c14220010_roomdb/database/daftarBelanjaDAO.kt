@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
+//Query untuk database
 @Dao
 interface daftarBelanjaDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)

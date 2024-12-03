@@ -4,29 +4,29 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import uts.c14220010.c14220010_roomdb.database.daftarBelanjaDB.Companion
 
-//Jika ada perubahan, version harus diubah
 @Database(entities = [daftarBelanja::class], version = 1)
-abstract class daftarBelanjaDB : RoomDatabase() {
-    abstract fun fundaftarBelanjaDAO() : daftarBelanjaDAO
+abstract class historyBelanjaDB : RoomDatabase() {
+    abstract fun funhistoryBelanjaDAO() : historyBelanjaDAO
 
     companion object{
         @Volatile
-        private var INSTANCE: daftarBelanjaDB? = null
+        private var INSTANCE: historyBelanjaDB? = null
 
         @JvmStatic
-        fun getDatabase(context: Context): daftarBelanjaDB {
+        fun getDatabase(context: Context): historyBelanjaDB {
             if (INSTANCE == null) {
-                synchronized(daftarBelanjaDB::class.java) {
+                synchronized(historyBelanjaDB::class.java) {
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
-                        daftarBelanjaDB::class.java, "daftarBelanja_db"
+                        historyBelanjaDB::class.java, "historyBelanja_db"
                     )
                         .allowMainThreadQueries()
                         .build()
                 }
             }
-            return INSTANCE as daftarBelanjaDB
+            return INSTANCE as historyBelanjaDB
         }
     }
 }
